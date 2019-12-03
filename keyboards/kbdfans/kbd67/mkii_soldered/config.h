@@ -19,6 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
+#define LEADER_PER_KEY_TIMING 2000
+#define LEADER_TIMEOUT 1000
+
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xA103
 #define PRODUCT_ID      0x0013
