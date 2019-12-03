@@ -125,17 +125,17 @@ void matrix_scan_user(void) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[0] = LAYOUT_all(
-		KC_ESC,             KC_1,    KC_2,    KC_3,    KC_4,    KC_5,          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,  KC_EQL,  KC_BSPC, KC_BSPC,  KC_HOME,
-		LT(1, KC_TAB),              KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    HYPR_T(KC_LBRC), KC_RBRC,           KC_BSLS,  TO(1),
-		LCTL_T(KC_ESC),     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,    KC_QUOT,          KC_ENT,             KC_PGDN,
+		LM(1, MOD_LGUI),             KC_1,    KC_2,    KC_3,    KC_4,    KC_5,          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,  KC_EQL,  KC_BSPC, KC_BSPC,  KC_HOME,
+		LT(1, KC_TAB),              KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,           KC_BSLS,  TO(1),
+		LCTL_T(KC_ESC),     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,    KC_QUOT,          KC_ENT,             TO(0),
 		KC_LSPO,         KC_LSPO,    KC_Z,    KC_X,    KC_C,    KC_V,          KC_B,    KC_N,    KC_M, KC_COMM,          KC_DOT,    KC_SLSH, KC_RSPC,             KC_UP,    LCTL(LGUI(KC_Q)),
-		LCTL_T(KC_CAPS), KC_LALT, KC_LGUI,   KC_NO,                          KC_SPC,             KC_NO,         RGUI_T(KC_UNDS),    KC_LEAD,         KC_LEFT,   KC_DOWN,   KC_RGHT
+		HYPR_T(KC_ESC), LALT_T(KC_CAPS), KC_LGUI,   KC_NO,                          KC_SPC,             KC_NO,         RGUI_T(KC_UNDS),    KC_LEAD,         KC_LEFT,   KC_DOWN,   KC_RGHT
 	),
 	[1] = LAYOUT_all(
-		TO(0),    KC_GRV, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,
+		KC_GRV,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,       _______,
-		_______, _______, _______, _______, KC_PGDN, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, RGUI(KC_TAB), RGUI(KC_GRV),          _______,                _______,
+		_______, _______, _______, _______, KC_PGDN, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,          _______,                _______,
 		_______, _______, _______, _______, _______, _______, KC_PGUP, _______, _______, _______, _______, _______, _______,             HYPR(KC_K), _______,
-		_______, _______, _______,          _______,          _______,          _______,          _______, _______,          HYPR(KC_H), HYPR(KC_J), HYPR(KC_L)
+		_______, _______, _______,          _______,          KC_TAB,          _______,            KC_GRV, _______,          HYPR(KC_H), HYPR(KC_J), HYPR(KC_L)
 	)
 };
