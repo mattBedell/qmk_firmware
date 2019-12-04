@@ -107,8 +107,8 @@ void matrix_scan_user(void) {
       SEND_STRING(SS_LSFT(SS_LALT("j")));
     }
 
-		// send window to monitor next
-		SEQ_THREE_KEYS(KC_S, KC_N, KC_M) {
+		// send window to desktop next
+		SEQ_THREE_KEYS(KC_S, KC_N, KC_D) {
 			register_code(KC_LSFT);
 			register_code(KC_LALT);
 			register_code(KC_LGUI);
@@ -121,8 +121,8 @@ void matrix_scan_user(void) {
 			unregister_code(KC_LCTL);
     }
 
-		// send window to monitor recent
-		SEQ_THREE_KEYS(KC_S, KC_R, KC_M) {
+		// send window to desktop recent
+		SEQ_THREE_KEYS(KC_S, KC_R, KC_D) {
 			register_code(KC_LSFT);
 			register_code(KC_LALT);
 			register_code(KC_LGUI);
@@ -135,8 +135,8 @@ void matrix_scan_user(void) {
 			unregister_code(KC_LCTL);
     }
 
-		// send window to monitor previous
-		SEQ_THREE_KEYS(KC_S, KC_P, KC_M) {
+		// send window to desktop previous
+		SEQ_THREE_KEYS(KC_S, KC_P, KC_D) {
 			register_code(KC_LSFT);
 			register_code(KC_LALT);
 			register_code(KC_LGUI);
@@ -145,6 +145,36 @@ void matrix_scan_user(void) {
 			unregister_code(KC_Z);
 			unregister_code(KC_LSFT);
 			unregister_code(KC_LALT);
+			unregister_code(KC_LGUI);
+			unregister_code(KC_LCTL);
+    }
+
+		// send window to monitor next
+		SEQ_THREE_KEYS(KC_S, KC_N, KC_M) {
+			register_code(KC_LGUI);
+			register_code(KC_LCTL);
+			register_code(KC_C);
+			unregister_code(KC_C);
+			unregister_code(KC_LGUI);
+			unregister_code(KC_LCTL);
+    }
+
+		// send window to monitor recent
+		SEQ_THREE_KEYS(KC_S, KC_R, KC_M) {
+			register_code(KC_LGUI);
+			register_code(KC_LCTL);
+			register_code(KC_X);
+			unregister_code(KC_X);
+			unregister_code(KC_LGUI);
+			unregister_code(KC_LCTL);
+    }
+
+		// send window to monitor previous
+		SEQ_THREE_KEYS(KC_S, KC_P, KC_M) {
+			register_code(KC_LGUI);
+			register_code(KC_LCTL);
+			register_code(KC_Z);
+			unregister_code(KC_Z);
 			unregister_code(KC_LGUI);
 			unregister_code(KC_LCTL);
     }
@@ -162,9 +192,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[1] = LAYOUT_all(
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,       _______,
-		_______, _______, _______, _______, KC_PGDN, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,          _______,                _______,
-		_______, _______, _______, _______, _______, _______, KC_PGUP, _______, _______, _______, _______, _______, _______,             HYPR(KC_K), _______,
-		_______, _______, _______,          _______,          KC_TAB,          _______,            KC_GRV, _______,          HYPR(KC_H), HYPR(KC_J), HYPR(KC_L)
+		_______, _______, _______, _______, KC_PGDN, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_TAB, KC_GRV,          _______,                _______,
+		_______, _______, _______, _______, _______, _______, KC_PGUP, _______, _______, _______, _______, _______, _______,             _______, _______,
+		_______, _______, _______,          _______,          _______,          _______,            _______, _______,           _______, _______, _______
 	)
 };
 
