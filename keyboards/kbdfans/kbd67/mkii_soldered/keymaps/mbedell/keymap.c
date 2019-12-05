@@ -21,7 +21,7 @@ enum {
 enum {
   MEGA_TAB = 0,
 	MEGA_CAPS,
-	MEGA_SPC,
+	MEGA_ENT,
 };
 
 // Declare the functions to be used with your tap dance key(s)
@@ -36,8 +36,8 @@ void mt_reset (qk_tap_dance_state_t *state, void *user_data);
 void mc_finished (qk_tap_dance_state_t *state, void *user_data);
 void mc_reset (qk_tap_dance_state_t *state, void *user_data);
 
-void ms_finished (qk_tap_dance_state_t *state, void *user_data);
-void ms_reset (qk_tap_dance_state_t *state, void *user_data);
+void me_finished (qk_tap_dance_state_t *state, void *user_data);
+void me_reset (qk_tap_dance_state_t *state, void *user_data);
 
 
 void matrix_scan_user(void) {
@@ -193,14 +193,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[0] = LAYOUT_all(
 		KC_GRV,             KC_1,    KC_2,    KC_3,    KC_4,    KC_5,          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,  KC_EQL,  KC_BSPC, KC_BSPC,  KC_HOME,
 		TD(MEGA_TAB),              KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,           KC_BSLS,  TO(1),
-		TD(MEGA_CAPS),     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,    KC_QUOT,          KC_ENT,             TO(0),
+		TD(MEGA_CAPS),     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,    KC_QUOT,          TD(MEGA_ENT),             TO(0),
 		KC_LSPO,         KC_LSPO,    KC_Z,    KC_X,    KC_C,    KC_V,          KC_B,    KC_N,    KC_M, KC_COMM,          KC_DOT,    KC_SLSH, KC_RSPC,             KC_UP,    LCTL(LGUI(KC_Q)),
-		HYPR_T(KC_ESC), LALT_T(KC_CAPS), KC_LGUI,   KC_NO,                          TD(MEGA_SPC),             KC_NO,         KC_RGUI,    KC_LEAD,         KC_LEFT,   KC_DOWN,   KC_RGHT
+		HYPR_T(KC_ESC), LALT_T(KC_CAPS), KC_LGUI,   KC_NO,                          KC_SPC,             KC_NO,         KC_RGUI,    KC_LEAD,         KC_LEFT,   KC_DOWN,   KC_RGHT
 	),
 	[1] = LAYOUT_all(
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,       _______,
-		_______, _______, _______, _______, KC_PGDN, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_TAB, KC_GRV,          _______,                _______,
+		_______,  KC_TAB, KC_GRV, _______,  KC_PGDN, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,          _______,                _______,
 		_______, _______, _______, _______, _______, _______, KC_PGUP, _______, _______, _______, _______, _______, _______,             _______, _______,
 		_______, _______, _______,          _______,          _______,          _______,            _______, _______,           _______, _______, _______
 	)
@@ -240,7 +240,7 @@ static tap mc_tap_state = {
   .state = 0
 };
 
-static tap ms_tap_state = {
+static tap me_tap_state = {
   .is_press_action = true,
   .state = 0
 };
@@ -305,11 +305,11 @@ void mc_reset (qk_tap_dance_state_t *state, void *user_data) {
   mc_tap_state.state = 0;
 }
 
-void ms_finished (qk_tap_dance_state_t *state, void *user_data) {
-  ms_tap_state.state = cur_dance(state);
-  switch (ms_tap_state.state) {
+void me_finished (qk_tap_dance_state_t *state, void *user_data) {
+  me_tap_state.state = cur_dance(state);
+  switch (me_tap_state.state) {
     case SINGLE_TAP:
-      tap_code(KC_SPC);
+      tap_code(KC_ENT);
       break;
     case SINGLE_HOLD:
 			layer_on(1);
@@ -324,21 +324,21 @@ void ms_finished (qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 
-void ms_reset (qk_tap_dance_state_t *state, void *user_data) {
-  if (ms_tap_state.state==SINGLE_HOLD) {
+void me_reset (qk_tap_dance_state_t *state, void *user_data) {
+  if (me_tap_state.state==SINGLE_HOLD) {
 		layer_off(1);
 		clear_keyboard();
   }
 
-  if (ms_tap_state.state==DOUBLE_HOLD) {
+  if (me_tap_state.state==DOUBLE_HOLD) {
 		clear_keyboard();
   }
-  ms_tap_state.state = 0;
+  me_tap_state.state = 0;
 }
 
 //Associate our tap dance key with its functionality
 qk_tap_dance_action_t tap_dance_actions[] = {
   [MEGA_TAB] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, mt_finished, mt_reset, 275),
   [MEGA_CAPS] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, mc_finished, mc_reset, 275),
-  [MEGA_SPC] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, ms_finished, ms_reset, 275)
+  [MEGA_ENT] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, me_finished, me_reset, 200)
 };
