@@ -331,5 +331,5 @@ void me_reset (qk_tap_dance_state_t *state, void *user_data) {
 qk_tap_dance_action_t tap_dance_actions[] = {
   [MEGA_TAB] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, mt_finished, mt_reset, 275),
   [MEGA_CAPS] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, mc_finished, mc_reset, 275),
-  [MEGA_ENT] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, me_finished, me_reset, 200)
+  [MEGA_ENT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, me_finished, me_reset)
 };
