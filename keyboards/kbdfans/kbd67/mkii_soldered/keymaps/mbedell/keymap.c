@@ -255,7 +255,7 @@ void mt_finished (qk_tap_dance_state_t *state, void *user_data) {
       layer_on(1);
       break;
     case DOUBLE_TAP:
-			SEND_STRING(SS_LSFT("-"));
+			SEND_STRING("-");
       break;
     case DOUBLE_HOLD:
 			register_code(KC_LSFT);
