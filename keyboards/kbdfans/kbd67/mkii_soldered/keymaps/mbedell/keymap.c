@@ -8,7 +8,7 @@ typedef struct {
   int state;
 } tap;
 
-// Define a type for as many tap dance states as you need
+
 enum {
   SINGLE_TAP = 1,
   SINGLE_HOLD = 2,
@@ -24,20 +24,19 @@ enum {
 	MEGA_ENT,
 };
 
-// Declare the functions to be used with your tap dance key(s)
 
 // Function associated with all tap dances
 int cur_dance (qk_tap_dance_state_t *state);
 
 // Functions associated with individual tap dances
-void mt_finished (qk_tap_dance_state_t *state, void *user_data);
-void mt_reset (qk_tap_dance_state_t *state, void *user_data);
+void mega_tab_finished (qk_tap_dance_state_t *state, void *user_data);
+void mega_tab_reset (qk_tap_dance_state_t *state, void *user_data);
 
-void mc_finished (qk_tap_dance_state_t *state, void *user_data);
-void mc_reset (qk_tap_dance_state_t *state, void *user_data);
+void mega_caps_finished (qk_tap_dance_state_t *state, void *user_data);
+void mega_caps_reset (qk_tap_dance_state_t *state, void *user_data);
 
-void me_finished (qk_tap_dance_state_t *state, void *user_data);
-void me_reset (qk_tap_dance_state_t *state, void *user_data);
+void mega_enter_finished (qk_tap_dance_state_t *state, void *user_data);
+void mega_enter_reset (qk_tap_dance_state_t *state, void *user_data);
 
 
 void matrix_scan_user(void) {
@@ -230,24 +229,24 @@ int cur_dance (qk_tap_dance_state_t *state) {
 }
 
 // Initialize tap structure associated with tap dance key
-static tap mt_tap_state = {
+static tap mega_tab_tap_state = {
   .is_press_action = true,
   .state = 0
 };
 
-static tap mc_tap_state = {
+static tap mega_caps_tap_state = {
   .is_press_action = true,
   .state = 0
 };
 
-static tap me_tap_state = {
+static tap mega_enter_tap_state = {
   .is_press_action = true,
   .state = 0
 };
 
-void mt_finished (qk_tap_dance_state_t *state, void *user_data) {
-  mt_tap_state.state = cur_dance(state);
-  switch (mt_tap_state.state) {
+void mega_tab_finished (qk_tap_dance_state_t *state, void *user_data) {
+  mega_tab_tap_state.state = cur_dance(state);
+  switch (mega_tab_tap_state.state) {
     case SINGLE_TAP:
       tap_code(KC_TAB);
       break;
@@ -257,27 +256,22 @@ void mt_finished (qk_tap_dance_state_t *state, void *user_data) {
     case DOUBLE_TAP:
 			SEND_STRING("-");
       break;
-    case DOUBLE_HOLD:
-			register_code(KC_LSFT);
-			register_code(KC_LALT);
-			register_code(KC_LGUI);
-			register_code(KC_LCTL);
   }
 }
 
-void mt_reset (qk_tap_dance_state_t *state, void *user_data) {
-  if (mt_tap_state.state==SINGLE_HOLD) {
+void mega_tab_reset (qk_tap_dance_state_t *state, void *user_data) {
+  if (mega_tab_tap_state.state==SINGLE_HOLD) {
     layer_off(1);
   }
-  if (mt_tap_state.state==DOUBLE_HOLD) {
+  if (mega_tab_tap_state.state==DOUBLE_HOLD) {
 		clear_keyboard();
   }
-  mt_tap_state.state = 0;
+  mega_tab_tap_state.state = 0;
 }
 
-void mc_finished (qk_tap_dance_state_t *state, void *user_data) {
-  mc_tap_state.state = cur_dance(state);
-  switch (mc_tap_state.state) {
+void mega_caps_finished (qk_tap_dance_state_t *state, void *user_data) {
+  mega_caps_tap_state.state = cur_dance(state);
+  switch (mega_caps_tap_state.state) {
     case SINGLE_TAP:
       tap_code(KC_ESC);
       break;
@@ -296,19 +290,19 @@ void mc_finished (qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 
-void mc_reset (qk_tap_dance_state_t *state, void *user_data) {
-  if (mc_tap_state.state==SINGLE_HOLD) {
+void mega_caps_reset (qk_tap_dance_state_t *state, void *user_data) {
+  if (mega_caps_tap_state.state==SINGLE_HOLD) {
 		clear_keyboard();
   }
-  if (mc_tap_state.state==DOUBLE_HOLD) {
+  if (mega_caps_tap_state.state==DOUBLE_HOLD) {
 		clear_keyboard();
   }
-  mc_tap_state.state = 0;
+  mega_caps_tap_state.state = 0;
 }
 
-void me_finished (qk_tap_dance_state_t *state, void *user_data) {
-  me_tap_state.state = cur_dance(state);
-  switch (me_tap_state.state) {
+void mega_enter_finished (qk_tap_dance_state_t *state, void *user_data) {
+  mega_enter_tap_state.state = cur_dance(state);
+  switch (mega_enter_tap_state.state) {
     case SINGLE_TAP:
       tap_code(KC_ENT);
       break;
@@ -319,17 +313,17 @@ void me_finished (qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 
-void me_reset (qk_tap_dance_state_t *state, void *user_data) {
-  if (me_tap_state.state==SINGLE_HOLD) {
+void mega_enter_reset (qk_tap_dance_state_t *state, void *user_data) {
+  if (mega_enter_tap_state.state==SINGLE_HOLD) {
 		layer_off(1);
 		clear_keyboard();
   }
-  me_tap_state.state = 0;
+  mega_enter_tap_state.state = 0;
 }
 
 //Associate our tap dance key with its functionality
 qk_tap_dance_action_t tap_dance_actions[] = {
-  [MEGA_TAB] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, mt_finished, mt_reset, 275),
-  [MEGA_CAPS] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, mc_finished, mc_reset, 275),
-  [MEGA_ENT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, me_finished, me_reset)
+  [MEGA_TAB] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, mega_tab_finished, mega_tab_reset, 275),
+  [MEGA_CAPS] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, mega_caps_finished, mega_caps_reset, 275),
+  [MEGA_ENT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mega_enter_finished, mega_enter_reset)
 };
