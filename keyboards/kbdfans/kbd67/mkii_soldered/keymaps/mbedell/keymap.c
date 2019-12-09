@@ -13,15 +13,15 @@ enum {
   SINGLE_TAP = 1,
   SINGLE_HOLD = 2,
   DOUBLE_TAP = 3,
-	DOUBLE_HOLD = 4,
-	TRIPLE_TAP = 5,
-	TRIPLE_HOLD = 6,
+  DOUBLE_HOLD = 4,
+  TRIPLE_TAP = 5,
+  TRIPLE_HOLD = 6,
 };
 
 enum {
   MEGA_TAB = 0,
-	MEGA_CAPS,
-	MEGA_ENT,
+  MEGA_CAPS,
+  MEGA_ENT,
 };
 
 
@@ -44,165 +44,165 @@ void matrix_scan_user(void) {
     leading = false;
     leader_end();
 
-		// focus next desktop
+    // focus next desktop
     SEQ_THREE_KEYS(KC_F, KC_N, KC_D) {
       SEND_STRING(SS_LGUI(SS_LALT("c")));
     }
 
-		// focus recent desktop
-		SEQ_THREE_KEYS(KC_F, KC_R, KC_D) {
+    // focus recent desktop
+    SEQ_THREE_KEYS(KC_F, KC_R, KC_D) {
       SEND_STRING(SS_LGUI(SS_LALT("x")));
     }
 
-		// focus previous desktop
+    // focus previous desktop
     SEQ_THREE_KEYS(KC_F, KC_P, KC_D) {
       SEND_STRING(SS_LGUI(SS_LALT("z")));
     }
 
-		// focus next monitor
+    // focus next monitor
     SEQ_THREE_KEYS(KC_F, KC_N, KC_M) {
       SEND_STRING(SS_LCTL(SS_LALT("c")));
     }
 
-		// focus recent monitor
-		SEQ_THREE_KEYS(KC_F, KC_R, KC_M) {
+    // focus recent monitor
+    SEQ_THREE_KEYS(KC_F, KC_R, KC_M) {
       SEND_STRING(SS_LCTL(SS_LALT("x")));
     }
 
-		// focus previous monitor
+    // focus previous monitor
     SEQ_THREE_KEYS(KC_F, KC_P, KC_M) {
       SEND_STRING(SS_LCTL(SS_LALT("z")));
     }
 
-		// move window left
+    // move window left
     SEQ_THREE_KEYS(KC_M, KC_W, KC_L) {
       SEND_STRING(SS_LSFT(SS_LGUI("h")));
     }
 
-		// move window right
+    // move window right
     SEQ_THREE_KEYS(KC_M, KC_W, KC_R) {
       SEND_STRING(SS_LSFT(SS_LGUI("l")));
     }
 
-		// move window up
+    // move window up
     SEQ_THREE_KEYS(KC_M, KC_W, KC_U) {
       SEND_STRING(SS_LSFT(SS_LGUI("k")));
     }
 
-		// move window down
+    // move window down
     SEQ_THREE_KEYS(KC_M, KC_W, KC_D) {
       SEND_STRING(SS_LSFT(SS_LGUI("j")));
     }
 
-		// swap window left
-		SEQ_THREE_KEYS(KC_S, KC_W, KC_L) {
+    // swap window left
+    SEQ_THREE_KEYS(KC_S, KC_W, KC_L) {
       SEND_STRING(SS_LSFT(SS_LALT("h")));
     }
 
-		// swap window right
-		SEQ_THREE_KEYS(KC_S, KC_W, KC_R) {
+    // swap window right
+    SEQ_THREE_KEYS(KC_S, KC_W, KC_R) {
       SEND_STRING(SS_LSFT(SS_LALT("l")));
     }
 
-		// swap window up
-		SEQ_THREE_KEYS(KC_S, KC_W, KC_U) {
+    // swap window up
+    SEQ_THREE_KEYS(KC_S, KC_W, KC_U) {
       SEND_STRING(SS_LSFT(SS_LALT("k")));
     }
 
-		// swap window down
-		SEQ_THREE_KEYS(KC_S, KC_W, KC_D) {
+    // swap window down
+    SEQ_THREE_KEYS(KC_S, KC_W, KC_D) {
       SEND_STRING(SS_LSFT(SS_LALT("j")));
     }
 
-		// send window to desktop next
-		SEQ_THREE_KEYS(KC_S, KC_N, KC_D) {
-			register_code(KC_LSFT);
-			register_code(KC_LALT);
-			register_code(KC_LGUI);
-			register_code(KC_LCTL);
-			register_code(KC_C);
-			unregister_code(KC_C);
-			unregister_code(KC_LSFT);
-			unregister_code(KC_LALT);
-			unregister_code(KC_LGUI);
-			unregister_code(KC_LCTL);
+    // send window to desktop next
+    SEQ_THREE_KEYS(KC_S, KC_N, KC_D) {
+      register_code(KC_LSFT);
+      register_code(KC_LALT);
+      register_code(KC_LGUI);
+      register_code(KC_LCTL);
+      register_code(KC_C);
+      unregister_code(KC_C);
+      unregister_code(KC_LSFT);
+      unregister_code(KC_LALT);
+      unregister_code(KC_LGUI);
+      unregister_code(KC_LCTL);
     }
 
-		// send window to desktop recent
-		SEQ_THREE_KEYS(KC_S, KC_R, KC_D) {
-			register_code(KC_LSFT);
-			register_code(KC_LALT);
-			register_code(KC_LGUI);
-			register_code(KC_LCTL);
-			register_code(KC_X);
-			unregister_code(KC_X);
-			unregister_code(KC_LSFT);
-			unregister_code(KC_LALT);
-			unregister_code(KC_LGUI);
-			unregister_code(KC_LCTL);
+    // send window to desktop recent
+    SEQ_THREE_KEYS(KC_S, KC_R, KC_D) {
+      register_code(KC_LSFT);
+      register_code(KC_LALT);
+      register_code(KC_LGUI);
+      register_code(KC_LCTL);
+      register_code(KC_X);
+      unregister_code(KC_X);
+      unregister_code(KC_LSFT);
+      unregister_code(KC_LALT);
+      unregister_code(KC_LGUI);
+      unregister_code(KC_LCTL);
     }
 
-		// send window to desktop previous
-		SEQ_THREE_KEYS(KC_S, KC_P, KC_D) {
-			register_code(KC_LSFT);
-			register_code(KC_LALT);
-			register_code(KC_LGUI);
-			register_code(KC_LCTL);
-			register_code(KC_Z);
-			unregister_code(KC_Z);
-			unregister_code(KC_LSFT);
-			unregister_code(KC_LALT);
-			unregister_code(KC_LGUI);
-			unregister_code(KC_LCTL);
+    // send window to desktop previous
+    SEQ_THREE_KEYS(KC_S, KC_P, KC_D) {
+      register_code(KC_LSFT);
+      register_code(KC_LALT);
+      register_code(KC_LGUI);
+      register_code(KC_LCTL);
+      register_code(KC_Z);
+      unregister_code(KC_Z);
+      unregister_code(KC_LSFT);
+      unregister_code(KC_LALT);
+      unregister_code(KC_LGUI);
+      unregister_code(KC_LCTL);
     }
 
-		// send window to monitor next
-		SEQ_THREE_KEYS(KC_S, KC_N, KC_M) {
-			register_code(KC_LGUI);
-			register_code(KC_LCTL);
-			register_code(KC_C);
-			unregister_code(KC_C);
-			unregister_code(KC_LGUI);
-			unregister_code(KC_LCTL);
+    // send window to monitor next
+    SEQ_THREE_KEYS(KC_S, KC_N, KC_M) {
+      register_code(KC_LGUI);
+      register_code(KC_LCTL);
+      register_code(KC_C);
+      unregister_code(KC_C);
+      unregister_code(KC_LGUI);
+      unregister_code(KC_LCTL);
     }
 
-		// send window to monitor recent
-		SEQ_THREE_KEYS(KC_S, KC_R, KC_M) {
-			register_code(KC_LGUI);
-			register_code(KC_LCTL);
-			register_code(KC_X);
-			unregister_code(KC_X);
-			unregister_code(KC_LGUI);
-			unregister_code(KC_LCTL);
+    // send window to monitor recent
+    SEQ_THREE_KEYS(KC_S, KC_R, KC_M) {
+      register_code(KC_LGUI);
+      register_code(KC_LCTL);
+      register_code(KC_X);
+      unregister_code(KC_X);
+      unregister_code(KC_LGUI);
+      unregister_code(KC_LCTL);
     }
 
-		// send window to monitor previous
-		SEQ_THREE_KEYS(KC_S, KC_P, KC_M) {
-			register_code(KC_LGUI);
-			register_code(KC_LCTL);
-			register_code(KC_Z);
-			unregister_code(KC_Z);
-			unregister_code(KC_LGUI);
-			unregister_code(KC_LCTL);
+    // send window to monitor previous
+    SEQ_THREE_KEYS(KC_S, KC_P, KC_M) {
+      register_code(KC_LGUI);
+      register_code(KC_LCTL);
+      register_code(KC_Z);
+      unregister_code(KC_Z);
+      unregister_code(KC_LGUI);
+      unregister_code(KC_LCTL);
     }
   }
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-	[0] = LAYOUT_all(
-		KC_GRV,             KC_1,    KC_2,    KC_3,    KC_4,    KC_5,          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,  KC_EQL,  KC_BSPC, KC_BSPC,  KC_HOME,
-		TD(MEGA_TAB),              KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,           KC_BSLS,  TO(1),
-		TD(MEGA_CAPS),     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,    KC_QUOT,          TD(MEGA_ENT),             TO(0),
-		KC_LSPO,         KC_LSPO,    KC_Z,    KC_X,    KC_C,    KC_V,          KC_B,    KC_N,    KC_M, KC_COMM,          KC_DOT,    KC_SLSH, KC_RSPC,             KC_UP,    LCTL(LGUI(KC_Q)),
-		KC_LGUI, LALT_T(KC_CAPS), KC_LGUI,   KC_NO,                          KC_SPC,             KC_NO,         KC_RGUI,    KC_LEAD,         KC_LEFT,   KC_DOWN,   KC_RGHT
-	),
-	[1] = LAYOUT_all(
-		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,
-		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,       _______,
-		_______,  KC_TAB, KC_GRV, _______,  KC_PGDN, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,          _______,                _______,
-		_______, _______, _______, _______, _______, _______, KC_PGUP, _______, _______, _______, _______, _______, _______,             _______, _______,
-		_______, _______, _______,          _______,          _______,          _______,            _______, _______,           _______, _______, _______
-	)
+  [0] = LAYOUT_all(
+    KC_GRV,             KC_1,    KC_2,    KC_3,    KC_4,    KC_5,          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,  KC_EQL,  KC_BSPC, KC_BSPC,  KC_HOME,
+    TD(MEGA_TAB),              KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,           KC_BSLS,  TO(1),
+    TD(MEGA_CAPS),     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,          KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,    KC_QUOT,          TD(MEGA_ENT),             TO(0),
+    KC_LSPO,         KC_LSPO,    KC_Z,    KC_X,    KC_C,    KC_V,          KC_B,    KC_N,    KC_M, KC_COMM,          KC_DOT,    KC_SLSH, KC_RSPC,             KC_UP,    LCTL(LGUI(KC_Q)),
+    KC_LGUI, LALT_T(KC_CAPS), KC_LGUI,   KC_NO,                          KC_SPC,             KC_NO,         KC_RGUI,    KC_LEAD,         KC_LEFT,   KC_DOWN,   KC_RGHT
+  ),
+  [1] = LAYOUT_all(
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,       _______,
+    _______,  KC_TAB, KC_GRV, _______,  KC_PGDN, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,          _______,                _______,
+    _______, _______, _______, _______, _______, _______, KC_PGUP, _______, _______, _______, _______, _______, _______,             _______, _______,
+    _______, _______, _______,          _______,          _______,          _______,            _______, _______,           _______, _______, _______
+  )
 };
 
 // Determine the current tap dance state
@@ -214,18 +214,18 @@ int cur_dance (qk_tap_dance_state_t *state) {
       return SINGLE_HOLD;
     }
   } else if (state->count == 2) {
-		if (!state->pressed) {
-			return DOUBLE_TAP;
-		} else {
-			return DOUBLE_HOLD;
-		}
+    if (!state->pressed) {
+      return DOUBLE_TAP;
+    } else {
+      return DOUBLE_HOLD;
+    }
   } else if (state->count == 3) {
-		if (!state->pressed) {
-			return TRIPLE_TAP;
-		} else {
-			return TRIPLE_HOLD;
-		}
-	} else return 8;
+    if (!state->pressed) {
+      return TRIPLE_TAP;
+    } else {
+      return TRIPLE_HOLD;
+    }
+  } else return 8;
 }
 
 // Initialize tap structure associated with tap dance key
@@ -254,7 +254,7 @@ void mega_tab_finished (qk_tap_dance_state_t *state, void *user_data) {
       layer_on(1);
       break;
     case DOUBLE_TAP:
-			SEND_STRING("-");
+      SEND_STRING("-");
       break;
   }
 }
@@ -264,7 +264,7 @@ void mega_tab_reset (qk_tap_dance_state_t *state, void *user_data) {
     layer_off(1);
   }
   if (mega_tab_tap_state.state==DOUBLE_HOLD) {
-		clear_keyboard();
+    clear_keyboard();
   }
   mega_tab_tap_state.state = 0;
 }
@@ -279,23 +279,23 @@ void mega_caps_finished (qk_tap_dance_state_t *state, void *user_data) {
       register_code16(KC_LCTL);
       break;
     case DOUBLE_TAP:
-			SEND_STRING("_");
+      SEND_STRING("_");
       break;
     case DOUBLE_HOLD:
-			register_code(KC_LSFT);
-			register_code(KC_LALT);
-			register_code(KC_LGUI);
-			register_code(KC_LCTL);
+      register_code(KC_LSFT);
+      register_code(KC_LALT);
+      register_code(KC_LGUI);
+      register_code(KC_LCTL);
       break;
   }
 }
 
 void mega_caps_reset (qk_tap_dance_state_t *state, void *user_data) {
   if (mega_caps_tap_state.state==SINGLE_HOLD) {
-		clear_keyboard();
+    clear_keyboard();
   }
   if (mega_caps_tap_state.state==DOUBLE_HOLD) {
-		clear_keyboard();
+    clear_keyboard();
   }
   mega_caps_tap_state.state = 0;
 }
@@ -307,7 +307,7 @@ void mega_enter_finished (qk_tap_dance_state_t *state, void *user_data) {
       tap_code(KC_ENT);
       break;
     case SINGLE_HOLD:
-			layer_on(1);
+      layer_on(1);
       register_code16(KC_LGUI);
       break;
   }
@@ -315,8 +315,8 @@ void mega_enter_finished (qk_tap_dance_state_t *state, void *user_data) {
 
 void mega_enter_reset (qk_tap_dance_state_t *state, void *user_data) {
   if (mega_enter_tap_state.state==SINGLE_HOLD) {
-		layer_off(1);
-		clear_keyboard();
+    layer_off(1);
+    clear_keyboard();
   }
   mega_enter_tap_state.state = 0;
 }
