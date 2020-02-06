@@ -278,23 +278,11 @@ void mega_caps_finished (qk_tap_dance_state_t *state, void *user_data) {
     case SINGLE_HOLD:
       register_code16(KC_LCTL);
       break;
-    case DOUBLE_TAP:
-      SEND_STRING("_");
-      break;
-    case DOUBLE_HOLD:
-      register_code(KC_LSFT);
-      register_code(KC_LALT);
-      register_code(KC_LGUI);
-      register_code(KC_LCTL);
-      break;
   }
 }
 
 void mega_caps_reset (qk_tap_dance_state_t *state, void *user_data) {
   if (mega_caps_tap_state.state==SINGLE_HOLD) {
-    clear_keyboard();
-  }
-  if (mega_caps_tap_state.state==DOUBLE_HOLD) {
     clear_keyboard();
   }
   mega_caps_tap_state.state = 0;
