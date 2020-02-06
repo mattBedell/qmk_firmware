@@ -196,7 +196,7 @@ void mega_lsft_reset (qk_tap_dance_state_t *state, void *user_data) {
 //Associate our tap dance key with its functionality
 qk_tap_dance_action_t tap_dance_actions[] = {
   [MEGA_TAB] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, mega_tab_finished, mega_tab_reset, 275),
-  [MEGA_CAPS] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, mega_caps_finished, mega_caps_reset, 275),
+  [MEGA_CAPS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mega_caps_finished, mega_caps_reset),
   [MEGA_BSLS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mega_bsls_finished, mega_bsls_reset),
-  [MEGA_LSFT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mega_lsft_finished, mega_lsft_reset)
+  [MEGA_LSFT] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, mega_lsft_finished, mega_lsft_reset, 275)
 };
