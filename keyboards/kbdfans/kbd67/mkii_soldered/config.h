@@ -22,7 +22,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LEADER_PER_KEY_TIMING 2000
 #define LEADER_TIMEOUT 1000
 #define TAPPING_TERM 175
-#define TAPPING_TERM_PER_KEY
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xA103
